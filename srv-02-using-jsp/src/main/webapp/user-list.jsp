@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +13,54 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand navbar-dark bg-primary">
-		<div class="container">
-			<span class="navbar-brand">Using JSP</span>
-			
-			<ul class="navbar-nav">
-				<li class="nav-item"><a href="users" class="nav-link active">User List</a></li>
-				<li class="nav-item"><a href="edit-user" class="nav-link">Add New User</a></li>
-			</ul>
-		</div>
-	</nav>
+	<app:navbar page="user-list" />
 	
 	<div class="container mt-4">
 		<h3>User List</h3>
+		
+		<form class="row">
+			<div class="col-auto d-flex align-items-center gap-2">
+				<label class="form-label">Keyword</label>
+				<input type="text" name="keyword" value="${param.keyword}" placeholder="Search Keyword" class="form-control" />
+			</div>
+			
+			<div class="col">
+				<button type="submit" class="btn btn-primary">
+					Search
+				</button>
+			</div>
+		</form>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>No.</td>
+					<td>Name</td>
+					<td>Phone</td>
+					<td>Email</td>
+					<td></td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<c:forEach items="${list}" varStatus="status" var="item">
+					<tr>
+						<td>${status.index + 1}</td>
+						<td>${item.name}</td>
+						<td>${item.phone}</td>
+						<td>${item.email}</td>
+						<td>
+							<c:url value="/user-details" var="showDetails">
+								<c:param name="id" value="${item.id}"></c:param>
+							</c:url>
+							<a href="${showDetails}" class="btn btn-primary btn-sm">
+								Show Details
+							</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</div>
 
 </body>

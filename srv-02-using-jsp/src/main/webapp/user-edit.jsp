@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
+<%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,19 +13,29 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand navbar-dark bg-primary">
-		<div class="container">
-			<span class="navbar-brand">Using JSP</span>
-			
-			<ul class="navbar-nav">
-				<li class="nav-item"><a href="users" class="nav-link">User List</a></li>
-				<li class="nav-item"><a href="edit-user" class="nav-link active">Add New User</a></li>
-			</ul>
-		</div>
-	</nav>
+	<app:navbar page="user-edit" />
 	
 	<div class="container mt-4">
 		<h3>Edit User</h3>
+		
+		<form method="post" class="w-50">
+			<div class="mb-3">
+				<label class="form-label">Name</label>
+				<input type="text" name="name" required="required" placeholder="Enter Name" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Phone</label>
+				<input type="tel" name="phone" required="required" placeholder="Enter Phone Number" class="form-control" />
+			</div>
+			<div class="mb-3">
+				<label class="form-label">Email</label>
+				<input type="email" name="email" required="required" placeholder="Enter Email Address" class="form-control" />
+			</div>
+			
+			<button type="submit" class="btn btn-primary">
+				Save User
+			</button>
+		</form>
 	</div>
 	
 	
