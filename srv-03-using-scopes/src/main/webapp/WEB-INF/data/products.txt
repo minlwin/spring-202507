@@ -1,0 +1,9 @@
+1	Nest Coffee	Drinks	2500
+2	Pepsi	Drinks	1000
+3	Coke	Drinks	1200
+4	Pucci Pillow Pan	Snacks	1800
+5	Potato Chips	Snacks	1500
+6	Fish Chips	Snacks	1500
+7	San Flower Seeds	Snacks	1000
+8	Tiger Beer	Beer	4500
+9	Brothers Beer	Beer	4000
