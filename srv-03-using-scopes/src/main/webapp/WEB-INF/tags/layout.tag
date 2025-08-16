@@ -1,4 +1,5 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ attribute name="title" type="java.lang.String" %>
 <!DOCTYPE html>
 <html>
@@ -12,10 +13,38 @@
 <body>
 
 	<!-- Navigation -->
-	<nav></nav>
+	<nav class="navbar navbar-expand bg-primary navbar-dark">
+		<c:url var="productsUrl" value="/products"></c:url>
+		<form action="${productsUrl}" class="container">
+			
+			<c:url var="homeUrl" value="/"></c:url>
+			<a href="${homeUrl}" class="navbar-brand">
+				<i class="bi-house"></i> Scope Demo
+			</a>
+			
+			<ul class="navbar-nav">
+				<c:if test="${null ne cart and cart.totalCount gt 0}">
+					<li class="nav-item">
+						<c:url var="cartUrl" value="/cart" />
+						<a href="${cartUrl}" class="nav-link">
+							<i class="bi-cart"></i> <span>${cart.totalCount}</span>
+						</a>
+					</li>
+				</c:if>
+				<li class="nav-item">
+					<div class="input-group ms-3">
+						<input type="text" class="form-control" value="${param.keyword}" placeholder="Search Keyword" name="keyword" />
+						<button type="submit" class="input-group-text">
+							<i class="bi-search"></i>
+						</button>
+					</div>
+				</li>
+			</ul>
+		</form>
+	</nav>
 	
 	<!-- Contents -->
-	<main>
+	<main class="container mt-4">
 		<jsp:doBody></jsp:doBody>
 	</main>
 	
