@@ -1,6 +1,7 @@
 package com.jdc.scopes.listener;
 
 import com.jdc.scopes.model.ProductManager;
+import com.jdc.scopes.model.SaleManager;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -17,5 +18,8 @@ public class ProductLoaderListener implements ServletContextListener{
 		var productManager = new ProductManager(path);
 		context.setAttribute(ProductManager.KEY, productManager);
 		context.setAttribute("products", productManager.getProducts());
+		
+		var saleManager = new SaleManager();
+		context.setAttribute(SaleManager.KEY, saleManager);
 	}
 }

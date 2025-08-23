@@ -55,7 +55,7 @@ public class CartServlet extends HttpServlet{
 		case "/cart/remove" -> {
 			var productId = req.getParameter("productId");
 			cart.remove(Integer.parseInt(productId));
-			yield "/cart.jsp";
+			yield cart.getTotalCount() > 0 ? "/cart.jsp" : "/index.jsp";
 		}
 		case "/cart/clear" -> {
 			cart.clear();

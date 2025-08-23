@@ -31,7 +31,14 @@ public class ShoppingCart implements Serializable{
 	}
 
 	public void remove(int productId) {
-		itemMap.remove(productId);
+		var item = itemMap.get(productId);
+		
+		if(null != item) {
+			item.countDown();
+			if(item.getQuantity() == 0) {
+				itemMap.remove(productId);
+			}
+		}
 	}
 
 	public void clear() {

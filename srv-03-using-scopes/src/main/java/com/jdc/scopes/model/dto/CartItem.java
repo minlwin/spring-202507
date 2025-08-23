@@ -30,4 +30,8 @@ public class CartItem implements Serializable{
 		++ this.quantity;
 	}
 
+	public void countDown() {
+		-- this.quantity;
+	}
+
 }
